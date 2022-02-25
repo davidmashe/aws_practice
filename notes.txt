@@ -1,0 +1,25 @@
+--- make `kubectl work` ---
+
+aws eks --region region update-kubeconfig --name cluster_name
+
+--- IAM roles needed ---
+
+- EKS requisite roles?
+	
+	AWSServiceRoleForAmazonEKS
+		AWS Service: eks (Service-Linked Role)
+
+	AWSServiceRoleForAmazonEKSNodegroup
+		AWS Service: eks-nodegroup (Service-Linked Role)
+		
+	AWSServiceRoleForAutoScaling
+		AWS Service: autoscaling (Service-Linked Role)
+
+- NodeGroup's IAM role ->
+	AmazonEKSWorkerNodePolicy, AmazonEC2ContainerRegistryReadOnly, AmazonEKS_CNI_Policy
+
+--- NodeGroup creation ---
+
+use t2.small instances, amazon linux i guess
+
+---
