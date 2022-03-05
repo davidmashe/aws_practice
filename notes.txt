@@ -1,6 +1,6 @@
 --- make `kubectl work` ---
 
-aws eks --region region update-kubeconfig --name cluster_name
+aws eks --region us-east-2 update-kubeconfig --name toby_bee_cluster
 
 --- IAM roles needed ---
 
@@ -15,11 +15,61 @@ aws eks --region region update-kubeconfig --name cluster_name
 	AWSServiceRoleForAutoScaling
 		AWS Service: autoscaling (Service-Linked Role)
 
+- Create cluster role -> start with `EKS - Cluster` use case
+
 - NodeGroup's IAM role ->
+	start with EC2 use case, then add:
 	AmazonEKSWorkerNodePolicy, AmazonEC2ContainerRegistryReadOnly, AmazonEKS_CNI_Policy
 
 --- NodeGroup creation ---
 
-use t2.small instances, amazon linux i guess
+use t2.small instances, amazon linux i guess, 2 nodes
 
 ---
+
+``
+
+---
+
+```
+
+kubectl apply -f k8s/namespace-and-service-account.yaml
+kubectl apply -f k8s/default-server-secret.yaml
+
+kubectl apply -f k8s/nginx-config.yaml
+
+kubectl apply -f k8s/rbac.yaml
+
+kubectl apply -f k8s/ingress-class.yaml
+
+kubectl apply -f k8s/nginx-ingress.yaml
+
+# CONFIRM with ->
+kubectl get po -n nginx-ingress
+
+kubectl apply -f k8s/loadbalancer-aws-elb.yaml
+
+kubectl apply -f k8s/deployment.yaml
+
+kubectl apply -f k8s/service.yaml
+
+#LAST:
+kubectl apply -f k8s/ingress.yaml
+
+```
+
+---
+
+Change route 53 record to point to ELB
+
+---
+
+https://aws.amazon.com/premiumsupport/knowledge-center/eks-access-kubernetes-services/
+
+---
+
+https://github.com/nginxinc/kubernetes-ingress
+
+---
+
+https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-elb-load-balancer.html#:~:text=Sign%20in%20to%20the%20AWS,Choose%20Create%20record.
