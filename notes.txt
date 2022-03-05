@@ -64,6 +64,22 @@ Change route 53 record to point to ELB
 
 ---
 
+<pre>
+Hello World
+
+
+                                       ##         .
+                                 ## ## ##        ==
+                              ## ## ## ## ##    ===
+                           /""""""""""""""""\___/ ===
+                      ~~~ {~~ ~~~~ ~~~ ~~~~ ~~ ~ /  ===- ~~~
+                           \______ o          _,/
+                            \      \       _,'
+                             `'--.._\..--''
+</pre>
+
+---
+
 https://aws.amazon.com/premiumsupport/knowledge-center/eks-access-kubernetes-services/
 
 ---
