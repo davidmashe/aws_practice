@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: hello-world-container
-        image: crccheck/hello-world
+        image: davrovana/go_service
         ports:
-        - containerPort: 8000
+        - containerPort: 8080
