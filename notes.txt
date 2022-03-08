@@ -62,6 +62,8 @@ kubectl apply -f k8s/ingress.yaml
 
 Change route 53 record to point to ELB
 
+https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-elb-load-balancer.html
+
 ---
 
 <pre>
